@@ -1,0 +1,6 @@
+/target/
+/desktop.ini
+/selenide-tests-example.iml
+/build/
+/.idea/
+*.iml
