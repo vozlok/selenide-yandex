@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import ru.yandex.core.UserInfo;
 import ru.yandex.qatools.allure.annotations.Step;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Configuration.baseUrl;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
@@ -19,6 +20,7 @@ public class MainPage {
     @Step("Открытие главной страницы Yandex")
     public MainPage openMainPage(){
         open(baseUrl);
+        $(byXpath("//a[@href='//home.yandex.ru/?from=prov_main']")).shouldBe(visible);
         return this;
     }
 
