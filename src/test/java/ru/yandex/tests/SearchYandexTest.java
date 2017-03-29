@@ -1,5 +1,6 @@
 package ru.yandex.tests;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import ru.yandex.pages.MainPage;
 import ru.yandex.pages.SearchPage;
@@ -32,6 +33,7 @@ public class SearchYandexTest extends TestBase {
     }
 
     @Title("Поиск yandex. Переход по ссылке из примера поиска.")
+    @Ignore
     @Test
     public void YandexExampleSearch(){
         String exampleText = new MainPage().
@@ -39,5 +41,16 @@ public class SearchYandexTest extends TestBase {
                                     yandexExampleSearch();
         new SearchPage().
                 checkSearchValue(exampleText);
+    }
+
+    @Title("Поиск Ortnec")
+    @Test
+    public void YandexSearchOrtnec(){
+        String search = "Ortnec";
+        new MainPage().
+                openMainPage().
+                yandexSearch(search).
+                checkFirstResult(search).
+                checkOrtnecAllLink(search);
     }
 }

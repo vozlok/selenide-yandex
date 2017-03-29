@@ -3,6 +3,7 @@ package ru.yandex.utils;
 import com.codeborne.selenide.Configuration;
 import org.junit.rules.ExternalResource;
 
+import static com.codeborne.selenide.Selenide.close;
 import static ru.yandex.tests.TestBase.clearCookies;
 import static ru.yandex.utils.BrowserFactory.selectBrowser;
 import static ru.yandex.utils.PropertiesReader.getProperty;
@@ -17,5 +18,10 @@ public class CustomExternalResource extends ExternalResource {
         selectBrowser(getProperty("browser"));
         Configuration.baseUrl = getProperty("baseUrl");
         clearCookies();
+    }
+
+    @Override
+    protected void after() {
+        close();
     }
 }
